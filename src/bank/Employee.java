@@ -3,9 +3,9 @@ package bank;
 public class Employee {
     String name;
     String famaly;
-    int number;
     int money;
 
+    int number;
     public Employee(String name, String famaly, int number, int money) {
         this.name = name;
         this.famaly = famaly;
