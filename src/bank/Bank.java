@@ -24,18 +24,20 @@ public class Bank {
         System.out.println("New client was created");
     }
 
-    public  void openCredit(int numberClient, int numberCredit, String title, int amount, int month){
-        Credit credit = new Credit(numberCredit, title, amount, month);
+    public  void openCredit(int numberClient, int numberCredit, String title, int amount, int month, int ranking){
+        Credit credit = new Credit(numberCredit, title, amount, month, ranking);
         boolean isApproved = false;
-        for (int i = 0; i < creditList.size(); i++) {
-         // Credit slavery  = creditList.get(i);
+        for (int i = 0; i < clientList.size(); i++) {
             Client client = clientList.get(i);
-          if(client.number == numberClient) {
+          if(client.number == numberClient&&ranking>=5) {
               client.openCredit(credit);
               System.out.println("Credit is approved");
               isApproved = true;
               break;
           }
+        }
+        if (!isApproved){
+            System.out.println("Client id " + numberClient + " is not exist");
         }
     }
 
@@ -48,6 +50,7 @@ public class Bank {
             }
         }
     }
+
     public void openAccount(int numberClient, int numberAccount, String title,int amount, boolean replenished){
         Account account = new Account(numberAccount, title, amount, replenished);
         boolean isOpend = false;
@@ -107,9 +110,8 @@ public class Bank {
         b.addClient("Boris", "Pavlov", 5000, 5);
         b.addClient("Anastasia", "Pavlova", 5001, 5);
         b.openAccount(5001, 56, "Super account", 50000, true);
-        b.printClientAccount(5002);
-
-        b.openCredit(5000,28, "Econom",100000, 12);
+        b.printClientAccount(5001);
+        b.openCredit(5000,28, "Econom",100000, 12,5);
         b.printClientCredit(5000);
     }
 }
