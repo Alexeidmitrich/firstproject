@@ -3,8 +3,8 @@ package bank;
 public class Director extends Employee {
 
 
-    public Director(String name,String famaly, int money) {
-        super(name, famaly, 0,  money);
+    public Director(String name,String family, int money) {
+        super(name, family, 0,  money);
     }
 
 

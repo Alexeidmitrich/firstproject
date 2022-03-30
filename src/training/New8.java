@@ -1,4 +1,4 @@
-package newes;
+package training;
 
 import java.util.Random;
 import java.util.Scanner;
