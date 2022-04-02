@@ -2,15 +2,21 @@ package bank;
 
 public class Employee extends Person {
 
-    int money;
+    private int salary;
 
-    public Employee(String name, String family, int number, int money) {
+    public Employee(String name, String family, int number, int salary) {
         super(name, family, number);
-        this.money = money;
+        this.salary = salary;
     }
 
     public void printInformation(){
-        System.out.println(name + " " + family + " " + money + " " + number);
+        System.out.println(getName() + " " + getFamily() + " " + salary + " " + getNumber());
+    }
+
+    public void setSalary(int salary) {
+        if (salary > 0) {
+            this.salary = salary;
+        }
     }
 }
 

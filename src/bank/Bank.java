@@ -28,23 +28,24 @@ public class Bank {
         Credit credit = new Credit(numberCredit, title, amount, month, ranking);
         boolean isApproved = false;
         for (int i = 0; i < clientList.size(); i++) {
-            Client client = clientList.get(i);
-          if(client.number == numberClient&&ranking>=5) {
-              client.openCredit(credit);
-              System.out.println("Credit is approved");
-              isApproved = true;
-              break;
-          }
+           Client client = clientList.get(i);
+           if(client.getNumber() == numberClient && ranking >= 5) {
+             client.openCredit(credit);
+             System.out.println("Credit is approved");
+             isApproved = true;
+             break;
+           }
         }
-        if (!isApproved){
-            System.out.println("Client id " + numberClient + " is not exist");
+
+           if(!isApproved){
+             System.out.println("Client id " + numberClient + " is not exist");
         }
     }
 
     public void printClientCredit(int numberClient) {
         for (int i = 0; i < clientList.size(); i++) {
             Client client  = clientList.get(i);
-            if (client.number ==  numberClient) {
+            if (client.getNumber() ==  numberClient) {
                 client.printCredit();
                 break;
             }
@@ -56,7 +57,7 @@ public class Bank {
         boolean isOpend = false;
         for (int i = 0; i < clientList.size(); i++) {
             Client client  = clientList.get(i);
-            if (client.number ==  numberClient) {
+            if (client.getNumber() ==  numberClient) {
                 client.openAccount(account);
                 System.out.println("Account is opened");
                 isOpend = true;
@@ -72,7 +73,7 @@ public class Bank {
     public void printClientAccount(int numberClient) {
         for (int i = 0; i < clientList.size(); i++) {
             Client client  = clientList.get(i);
-            if (client.number ==  numberClient) {
+            if (client.getNumber() ==  numberClient) {
                 client.printAccount();
                 break;
             }
@@ -84,10 +85,19 @@ public class Bank {
         employeeList.add(employee);
     }
 
+    public void setNewSalary(int numberEmployee, int salary) {
+        for (int i = 0; i < employeeList.size(); i++) {
+            Employee emp  = employeeList.get(i);
+            if (emp.getNumber() ==  numberEmployee) {
+                emp.setSalary( salary);
+                break;
+            }
+        }
+    }
     public void printAllEmployees() {
         for (int i = 0; i < employeeList.size(); i++) {
           Employee result = employeeList.get(i);
-            result.printInformation();
+          result.printInformation();
         }
     }
 
@@ -106,6 +116,7 @@ public class Bank {
         b.whoIsDirector();
         b.addEmployee("Vasja", "Ivanov", 100, 1000);
         b.addEmployee("Masha", "Ivanova", 110, 1000);
+        b.setNewSalary(100, -1200);
         b.printAllEmployees();
         b.addClient("Boris", "Pavlov", 5000, 5);
         b.addClient("Anastasia", "Pavlova", 5001, 5);

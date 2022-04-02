@@ -3,7 +3,7 @@ package bank;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client extends  Person{
+public class Client extends Person{
 
     int ranking;
    // List<BankProduct> bankProductList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Client extends  Person{
 
     public void printAccount(){
         if (accountList.size() == 0) {
-            System.out.println("Client " + number + " doesn't have any accounts");
+            System.out.println("Client " + getNumber() + " doesn't have any accounts");
         } else {
             for (int i = 0; i < accountList.size(); i++) {
                 Account account = accountList.get(i);
@@ -33,14 +33,13 @@ public class Client extends  Person{
 
             }
         }
-
     }
     public void printCredit(){
-        if(creditList.size() ==0){
-            System.out.println("Credit " + number + " doesn't have any credit");
+        if(creditList.size() == 0){
+            System.out.println("Credit " + getNumber() + " doesn't have any credit");
         }else {
             for (int i = 0; i < creditList.size(); i++) {
-             Credit credit =creditList.get(i);
+             Credit credit = creditList.get(i);
              credit.printInformation();
             }
         }
