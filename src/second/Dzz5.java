@@ -12,8 +12,8 @@ public class Dzz5 {
         //  test();
         // mass1();
         //    massiv();
-        //findList();
-        listic();
+        findList();
+        //listic();
         System.out.println();
         System.out.println(sum(3,8));
         /*

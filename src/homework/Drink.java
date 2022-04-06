@@ -1,9 +1,6 @@
 package homework;
 
 
-import bank.Client;
-import bank.Employee;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,7 +6,6 @@ import java.util.List;
 public class Client extends Person{
 
     int ranking;
-   // List<BankProduct> bankProductList = new ArrayList<>();
     List<Account> accountList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
 
