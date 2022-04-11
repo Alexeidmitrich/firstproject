@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Bookshop {
-    Scanner in = new Scanner(System.in);
+
     Director director;
-    //Department department;
     private List<Employee> employeeList = new ArrayList<>();
     private List<Book> bookList = new ArrayList<>();
     private List<Magazine> magazineList = new ArrayList<>();
@@ -15,17 +14,10 @@ public class Bookshop {
     private Department bookDepartment = new Department("книжный");
     private Department newspapersDepartment = new Department("газетный");
     private List<PrintEdition> soldPrinEditionList = new ArrayList<>();
-    //private List<Department> departmentList = new ArrayList<>();
 
     public Bookshop(Director director) {
         this.director = director;
     }
-
-   /*public void departmentStore(String title, int article, int price, int numberPlace, String department, String name, String surname){
-        Department depart = new Department(title, article, price, numberPlace, department, name, surname);
-        departmentList.add(depart);
-        printEditionList.add(depart);
-    }*/
 
     public void addEmployee(int number, String name, String surname, int salary,  String department) {
         Employee employee = new Employee(number, name, surname, salary, department);
@@ -94,8 +86,8 @@ public class Bookshop {
     public void productSale(int articleNumber){
         for (int i = 0; i < printEditionList.size(); i++) {
             if(printEditionList.get(i).getArticle() == articleNumber){
-                PrintEdition edition = printEditionList.get(i);
-               Department department  = edition.getDepartment();
+               PrintEdition edition = printEditionList.get(i);
+               Department department = edition.getDepartment();
                int price = edition.getPrice();
                department.addPriceToEmployee(price);
                soldPrinEditionList.add(edition);
@@ -108,11 +100,12 @@ public class Bookshop {
             soldPrinEditionList.get(i).printInformation();
         }
     }
+
     public void printEmployeeWithMaxSales() {
         Employee max = employeeList.get(0);
         for (int i = 1; i < employeeList.size(); i++) {
             if (employeeList.get(i).getSalesPrice() > max.getSalesPrice()) {
-                max =employeeList.get(i);
+                max = employeeList.get(i);
             }
         }
         max.printInformationWithSales();
@@ -121,7 +114,7 @@ public class Bookshop {
     public void avarageSalaryEmployee(){
         int avarage = 0;
         for (int i = 0; i < employeeList.size(); i++) {
-            avarage += employeeList.get(i).getSalary()/ employeeList.size();
+            avarage += employeeList.get(i).getSalary() / employeeList.size();
         }
         System.out.println("Средняя заработаная плата :" + " " + avarage);
     }

@@ -1,6 +1,7 @@
 package bookshop;
 
-public class Employee extends Person{
+public class Employee extends Person {
+
     private String department;
     private int number;
     private int salary;

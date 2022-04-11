@@ -1,14 +1,13 @@
 package bookshop;
 
 
-public class PrintEdition{
+public class PrintEdition {
 
     private String title;
     private int article;
     private int price;
     private int numberPlace;
     private Department department;
-
 
     public PrintEdition(String title, int article, int price, int numberPlace, Department department) {
         this.title = title;
@@ -19,7 +18,7 @@ public class PrintEdition{
     }
 
     public void printInformationEdition(){
-        System.out.println(article +"," + title + ", Цена " + price + ", Отдел: " + department.getTitle());
+        System.out.println(article + "," + title + ", Цена " + price + ", Отдел: " + department.getTitle());
     }
 
     public String getTitle() {
