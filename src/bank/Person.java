@@ -1,23 +1,19 @@
 package bank;
 
 public abstract class Person {
-
+    private int number;
     private String name;
     private String family;
-    private int number;
 
     public Person(String name, String family, int number) {
         this.name = name;
         this.family = family;
         this.number = number;
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
+    public int getNumber() {
+        return number;
     }
 
     public void setNumber(int number) {
@@ -28,11 +24,15 @@ public abstract class Person {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getFamily() {
         return family;
     }
 
-    public int getNumber() {
-        return number;
+    public void setFamily(String family) {
+        this.family = family;
     }
 }

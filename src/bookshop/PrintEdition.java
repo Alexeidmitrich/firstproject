@@ -1,14 +1,16 @@
 package bookshop;
 
-public class PrintEdition {
+
+public class PrintEdition{
 
     private String title;
     private int article;
     private int price;
     private int numberPlace;
-    private String department;
+    private Department department;
 
-    public PrintEdition(String title, int article, int price, int numberPlace, String department) {
+
+    public PrintEdition(String title, int article, int price, int numberPlace, Department department) {
         this.title = title;
         this.article = article;
         this.price = price;
@@ -17,7 +19,7 @@ public class PrintEdition {
     }
 
     public void printInformationEdition(){
-        System.out.println(article +"," + title + ", Цена " + price + ", Отдел: " + department);
+        System.out.println(article +"," + title + ", Цена " + price + ", Отдел: " + department.getTitle());
     }
 
     public String getTitle() {
@@ -52,11 +54,15 @@ public class PrintEdition {
         this.numberPlace = numberPlace;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void printInformation(){
+        Employee employee = department.getEmployee();
+        System.out.println(getArticle()+ "; " + employee.getSurname() + " " + employee.getName() + " ;" + getPrice());
+    }
+    public void setDepartment(Department department) {
         this.department = department;
     }
 }

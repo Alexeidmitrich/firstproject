@@ -36,6 +36,5 @@ public class Hostel {
         b.addEmployers("Zhanna", "Alekseeva", 50000);
         b.addEmployers("Ivan","Gorshkov", 48000);
         b.printAllEmployers();
-        //gi
     }
 }
