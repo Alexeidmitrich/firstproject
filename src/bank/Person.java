@@ -3,11 +3,11 @@ package bank;
 public abstract class Person {
     private int number;
     private String name;
-    private String family;
+    private String surname;
 
-    public Person(String name, String family, int number) {
+    public Person(String name, String surname, int number) {
         this.name = name;
-        this.family = family;
+        this.surname = surname;
         this.number = number;
 
     }
@@ -28,11 +28,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public String getFamily() {
-        return family;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

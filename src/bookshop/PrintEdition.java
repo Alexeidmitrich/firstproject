@@ -6,10 +6,10 @@ public class PrintEdition {
     private String title;
     private int article;
     private int price;
-    private int numberPlace;
+    private String numberPlace;
     private Department department;
 
-    public PrintEdition(String title, int article, int price, int numberPlace, Department department) {
+    public PrintEdition(String title, int article, int price, String numberPlace, Department department) {
         this.title = title;
         this.article = article;
         this.price = price;
@@ -45,11 +45,11 @@ public class PrintEdition {
         this.price = price;
     }
 
-    public int getNumberPlace() {
+    public String getNumberPlace() {
         return numberPlace;
     }
 
-    public void setNumberPlace(int numberPlace) {
+    public void setNumberPlace(String numberPlace) {
         this.numberPlace = numberPlace;
     }
 

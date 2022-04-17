@@ -2,7 +2,7 @@ package bank;
 
 public class Employee extends Person {
 
-    private int salary;
+    protected int salary;
 
     public Employee(String name, String family, int number, int salary) {
         super(name, family, number);
@@ -10,7 +10,7 @@ public class Employee extends Person {
     }
 
     public void printInformation(){
-        System.out.println(getName() + " " + getFamily() + " " + salary + " " + getNumber());
+        System.out.println(getName() + " " + getSurname() + " " + getNumber() + " " + salary);
     }
 
     public void setSalary(int salary) {

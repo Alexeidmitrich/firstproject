@@ -9,8 +9,8 @@ public class Client extends Person{
     List<Account> accountList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
 
-    public Client(String name, String family, int number, int ranking) {
-        super(name, family, number);
+    public Client(String name, String surname, int number, int ranking) {
+        super(name, surname, number);
         this.ranking = ranking;
     }
 

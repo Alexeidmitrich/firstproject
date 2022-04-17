@@ -2,7 +2,8 @@ package bookshop;
 
 public class Book extends PrintEdition {
 
-    public Book(String title, int article, int price, int numberPlace, Department department) {
+
+    public Book(String title, int article, int price, String numberPlace, Department department) {
         super(title, article, price, numberPlace, department);
     }
 }

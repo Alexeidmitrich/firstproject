@@ -2,11 +2,10 @@ package bookshop;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Bookshop {
 
-    Director director;
+    private Director director;
     private List<Employee> employeeList = new ArrayList<>();
     private List<Book> bookList = new ArrayList<>();
     private List<Magazine> magazineList = new ArrayList<>();
@@ -30,14 +29,14 @@ public class Bookshop {
         }
     }
 
-    public void addBook(String title, int article, int price, int numberPlace) {
+    public void addBook(String title, int article, int price, String numberPlace) {
         Book book = new Book(title, article, price, numberPlace, bookDepartment);
         bookList.add(book);
         printEditionList.add(book);
         bookDepartment.addPrintEdition(book);
     }
 
-    public void addMagazine(String title, int article, int price, int numberPlace) {
+    public void addMagazine(String title, int article, int price, String numberPlace) {
         Magazine magazine = new Magazine(title, article, price, numberPlace, newspapersDepartment);
         magazineList.add(magazine);
         printEditionList.add(magazine);
@@ -125,10 +124,10 @@ public class Bookshop {
         Bookshop a = new Bookshop(director);
         a.addEmployee(1, "Светлана", "Пушкина",25_000,"книжный");
         a.addEmployee(2, "Жанна", "Иванова",37_000, "газетный");
-        a.addBook("Му-му", 124, 1200, 3);
-        a.addBook("Война и мир", 145, 1540, 4);
-        a.addMagazine("Искра", 254, 250, 1);
-        a.addMagazine("Пионерская правда", 215, 120, 7);
+        a.addBook("Му-му", 124, 1200, "A234");
+        a.addBook("Война и мир", 145, 1540, "443E");
+        a.addMagazine("Искра", 254, 250, "A31");
+        a.addMagazine("Пионерская правда", 215, 120, "A123");
        // a.whoIsDirector();
         a.printAllEmloyee();
         a.printAllPrintEditions();

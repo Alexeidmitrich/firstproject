@@ -8,14 +8,34 @@ public class Bank {
     String title;
     String address;
     Director director;
+    Employee employee;
+    Client client;
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
+
+
+    public Bank(String title, String address) {
+        this.title = title;
+        this.address = address;
+    }
 
     public Bank(String title, String address, Director director){
            this. title  = title;
            this.address = address;
            this.director = director;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public void addClient(String name, String family, int number, int ranking) {
@@ -52,8 +72,17 @@ public class Bank {
         }
     }
 
+    public void openAccount(int numberClient, int numberAccount, String title, boolean replenished){
+        Account account = new Account(numberAccount, title,  replenished);
+        openAccount(account, numberClient);
+    }
+
     public void openAccount(int numberClient, int numberAccount, String title,int amount, boolean replenished){
         Account account = new Account(numberAccount, title, amount, replenished);
+        openAccount(account, numberClient);
+
+    }
+    public void openAccount(Account account, int numberClient){
         boolean isOpend = false;
         for (int i = 0; i < clientList.size(); i++) {
             Client client  = clientList.get(i);
@@ -80,8 +109,8 @@ public class Bank {
         }
     }
 
-    public void addEmployee(String name, String family, int number, int money){
-        Employee employee = new Employee(name, family, number, money);
+    public void addEmployee(String name, String family, int number, int salary){
+        Employee employee = new Employee(name, family, number, salary);
         employeeList.add(employee);
     }
 
