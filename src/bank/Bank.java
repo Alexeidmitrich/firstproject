@@ -8,8 +8,6 @@ public class Bank {
     String title;
     String address;
     Director director;
-    Employee employee;
-    Client client;
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
@@ -26,16 +24,8 @@ public class Bank {
            this.director = director;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public void setDirector(Director director) {
         this.director = director;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public void addClient(String name, String family, int number, int ranking) {
@@ -109,8 +99,8 @@ public class Bank {
         }
     }
 
-    public void addEmployee(String name, String family, int number, int salary){
-        Employee employee = new Employee(name, family, number, salary);
+    public void addEmployee(String name, String surname, int number, int salary){
+        Employee employee = new Employee(name, surname, number, salary);
         employeeList.add(employee);
     }
 

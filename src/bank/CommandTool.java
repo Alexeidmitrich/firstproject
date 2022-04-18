@@ -16,9 +16,19 @@ public class CommandTool {
         String lastName = sc.nextLine();
         System.out.println("Diirector's salary");
         int salary = sc.nextInt();
+        System.out.println("Employee's firstname");
+        String nameEmployee = sc.nextLine();
+        System.out.println("Employee's lastname");
+        String lastNameEmployee = sc.nextLine();
+        System.out.println("Employee number");
+        int numberEmployee = sc.nextInt();
+        System.out.println("Employee's salary");
+        int salaryEmployee = sc.nextInt();
         Director director = new Director(firstname, lastName, salary);
         director.printInformation();
         Bank bank  = new Bank(title, address, director);
         bank.info();
+        Employee employee = new Employee(nameEmployee, lastNameEmployee, numberEmployee, salaryEmployee);
+        employee.printInformation();
     }
 }

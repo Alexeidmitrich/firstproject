@@ -3,9 +3,10 @@ package bank;
 public class Employee extends Person {
 
     protected int salary;
+    protected int number;
 
-    public Employee(String name, String family, int number, int salary) {
-        super(name, family, number);
+    public Employee(String name, String surname, int number, int salary) {
+        super(name, surname, number);
         this.salary = salary;
     }
 
