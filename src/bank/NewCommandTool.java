@@ -13,11 +13,13 @@ public class NewCommandTool {
     }
 
     public void parseCommand(String command) {
-        final String regexAddDirector = "(adddirector) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+)";
         final String bankInfo = "(addbank) ([a-zA-Z]+;[a-zA-Z-]+)";
+        final String regexAddDirector = "(adddirector) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+)";
+        final String employeeAdd = "(addEmployee) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
         final String employeeInfo = "(employee)";
-        //final String employeeInfo = "(addemployee) ([0-9]+)";
-        final String clientInfo = "(addclient) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String clientAdd = "(addClient) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String accountOpen = "(account) ([0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String clientInfo = "(client)";
         Matcher matcher = isPatternMatches(command, bankInfo);
         if (matcher.find()) {
             String data = matcher.group(2);
@@ -36,19 +38,46 @@ public class NewCommandTool {
             bank.setDirector(director);
             System.out.println("OK");
         }
+        matcher = isPatternMatches(command , employeeAdd);
+        if (matcher.find()){
+            String data = matcher.group(2);
+            System.out.println(data);
+            String [] employeeData = data.split(";");
+            int salary = Integer.parseInt(employeeData[3]);
+            int number = Integer.parseInt(employeeData[2]);
+            bank.addEmployee(employeeData[0], employeeData[1], number, salary);
+            System.out.println("OK");
+        }
         matcher = isPatternMatches(command , employeeInfo);
         if (matcher.find()){
             bank.printAllEmployees();
-    }
-        matcher = isPatternMatches(command , clientInfo);
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , clientAdd);
         if (matcher.find()){
             String data = matcher.group(2);
             System.out.println(data);
             String [] clientData = data.split(";");
             int ranking = Integer.parseInt(clientData[3]);
             int number = Integer.parseInt(clientData[2]);
-            Client client = new Client(clientData[0], clientData[1], number, ranking);
-            bank.printClientCredit(number);
+            bank.addClient(clientData[0], clientData[1], number, ranking);
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , accountOpen);
+        if (matcher.find()){
+            String data = matcher.group(2);
+            System.out.println(data);
+            String [] accountData = data.split(";");
+            int numberClient = Integer.parseInt(accountData[0]);
+            int replenished = Integer.parseInt(accountData[3]);
+            int amount = Integer.parseInt(accountData[2]);
+            bank.printClientAccount(1);
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , clientInfo);
+        if (matcher.find()){
+            bank.printClientAccount(1);
+            System.out.println("OK");
         }
     }
 

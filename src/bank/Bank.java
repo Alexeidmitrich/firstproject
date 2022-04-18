@@ -67,7 +67,7 @@ public class Bank {
         openAccount(account, numberClient);
     }
 
-    public void openAccount(int numberClient, int numberAccount, String title,int amount, boolean replenished){
+    public void openAccount(int numberClient, int numberAccount, String title, int amount, boolean replenished){
         Account account = new Account(numberAccount, title, amount, replenished);
         openAccount(account, numberClient);
 
