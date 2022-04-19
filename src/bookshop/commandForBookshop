@@ -1,0 +1,9 @@
+addbookshop Bookshop
+adddirector Aleksei;Ivanov
+addEmployee 1;Zhanna;Alekseeva;45000;department
+addEmployee 2;Svetlana;Pushkina;45000;department
+employee
+addBook MuMu;145;1250;ABB
+addMagazine Playboy;15;2250;ABB
+printEdition
+soldEmployee 145

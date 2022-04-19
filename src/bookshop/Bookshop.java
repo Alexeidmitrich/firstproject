@@ -18,7 +18,11 @@ public class Bookshop {
         this.director = director;
     }
 
-    public void addEmployee(int number, String name, String surname, int salary,  String department) {
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public void addEmployee(int number, String name, String surname, int salary, String department) {
         Employee employee = new Employee(number, name, surname, salary, department);
         employeeList.add(employee);
         if(department.equals("книжный")){
@@ -43,7 +47,7 @@ public class Bookshop {
         newspapersDepartment.addPrintEdition(magazine);
     }
 
-    public void printAllEmloyee() {
+    public void printAllEmployee() {
         for (int i = 0; i < employeeList.size(); i++) {
             Employee employee = employeeList.get(i);
             employee.printInformation();
@@ -129,11 +133,11 @@ public class Bookshop {
         a.addMagazine("Искра", 254, 250, "A31");
         a.addMagazine("Пионерская правда", 215, 120, "A123");
        // a.whoIsDirector();
-        a.printAllEmloyee();
+        a.printAllEmployee();
         a.printAllPrintEditions();
        // a.maxPrice();
        // a.minPrice();
-        //a.productSale(145);
+        a.productSale(145);
         //a.printAllSoldPrintEditions();
         a.productSale(254);
         a.printAllSoldPrintEditions();

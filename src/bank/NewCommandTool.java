@@ -18,9 +18,9 @@ public class NewCommandTool {
         final String employeeAdd = "(addEmployee) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
         final String employeeInfo = "(employee)";
         final String clientAdd = "(addClient) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
-        final String accountOpen = "(account) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
-        final String clientInfo = "(client) ([0-9]+)";
-        final String creditOpen = "(credit) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+;[0-9]+)";
+        final String accountOpen = "(openClientAccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String clientInfo = "(printclientAccount) ([0-9]+)";
+        final String creditOpen = "(creditData) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+;[0-9]+)";
         final String creditInfo = "(infoCredit) ([0-9]+)";
         Matcher matcher = isPatternMatches(command, bankInfo);
         if (matcher.find()) {

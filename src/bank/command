@@ -3,7 +3,7 @@ adddirector Aleksei;Pushkin;450000
 addEmployee Zhanna;Alekseeva;4;45000
 employee
 addClient Svetlana;Alekseeva;4;3
-account 4;2;Super;4;2
-client 4
-credit 4;2;Econom;4;4;5
+openClientAccount 4;2;Super;4;2
+printclientAccount 4
+creditData 4;2;Econom;4;4;5
 infoCredit 4
