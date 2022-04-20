@@ -9,20 +9,20 @@ public class NewCommandTool {
     private Bookshop bookshop;
     private Director director;
 
-    public NewCommandTool(){
-        this.bookshop = bookshop;
-        this.director = director;
-    }
     public void parseCommand(String command) {
         final String bookshopInfo = "(addbookshop) ([a-zA-Z]+)";
         final String directorAdd = "(adddirector) ([a-zA-Z]+;[a-zA-Z]+)";
-        final String employeeAdd = "(addEmployee) ([0-9]+;[a-zA-Z]+;[a-zA-Z]+;[0-9]+;[a-zA-Z]+)";
+        final String employeeAdd = "(addEmployee) ([0-9]+;[a-zA-Z]+;[a-zA-Z]+;[0-9]+;[а-яА-Я]+)";
         final String employeeInfo = "(employee)";
-        final String employeeWhoSold = "(soldEmployee) ([0-9]+)";
+        final String employeeWhoSold = "(enterNumberArticle) ([0-9]+)";
         final String priceMax = "(maxPrice)";
-        final String bookAdd = "(addBook) ([a-zA-Z]+;[0-9]+;[0-9]+;[a-zA-Z]+)";
-        final String magazineAdd = "(addMagazine) ([a-zA-Z]+;[0-9]+;[0-9]+;[a-zA-Z]+)";
+        final String priceMin = "(minPrice)";
+        final String bookAdd = "(addBook) ([a-zA-Z]+;[0-9]+;[0-9]+;[а-яА-Я]+)";
+        final String magazineAdd = "(addMagazine) ([a-zA-Z]+;[0-9]+;[0-9]+;[а-яА-Я]+)";
         final String PrintEditionInfo = "(printEdition)";
+        final String allSoldPrintEdition = "(whoAllSold)";
+        final String employeeWithMaxSales = "(maxSalesEmployee)";
+        final String avarageSalaryEmployee = "(avarageSalary)";
         Matcher matcher = isPatternMatches(command, bookshopInfo);
         if (matcher.find()) {
             String data = matcher.group(2);
@@ -88,7 +88,31 @@ public class NewCommandTool {
             bookshop.productSale(articleNumber);
             System.out.println("OK");
         }
-
+        matcher = isPatternMatches(command , allSoldPrintEdition);
+        if (matcher.find()){
+            bookshop.printAllSoldPrintEditions();
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , employeeWithMaxSales);
+        if (matcher.find()){
+            bookshop.printEmployeeWithMaxSales();
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , avarageSalaryEmployee);
+        if (matcher.find()){
+            bookshop.avarageSalaryEmployee();
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , priceMax);
+        if (matcher.find()){
+            bookshop.maxPrice();
+            System.out.println("OK");
+        }
+        matcher = isPatternMatches(command , priceMin);
+        if (matcher.find()){
+            bookshop.minPrice();
+            System.out.println("OK");
+        }
     }
     public Matcher isPatternMatches(String command, String regex){
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);

@@ -8,9 +8,6 @@ public class NewCommandTool {
 
     private Bank bank;
 
-    public NewCommandTool() {
-        this.bank = bank;
-    }
 
     public void parseCommand(String command) {
         final String bankInfo = "(addbank) ([a-zA-Z]+;[a-zA-Z-]+)";

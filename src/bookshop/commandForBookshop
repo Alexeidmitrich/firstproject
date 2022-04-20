@@ -1,9 +1,14 @@
 addbookshop Bookshop
 adddirector Aleksei;Ivanov
-addEmployee 1;Zhanna;Alekseeva;45000;department
-addEmployee 2;Svetlana;Pushkina;45000;department
+addEmployee 1;Zhanna;Alekseeva;45000;книжный
+addEmployee 2;Svetlana;Pushkina;45000;газетный
 employee
-addBook MuMu;145;1250;ABB
-addMagazine Playboy;15;2250;ABB
+addBook MuMu;145;1250;книжный
+addMagazine Playboy;15;2250;газетный
 printEdition
-soldEmployee 145
+enterNumberArticle 15
+whoAllSold
+maxSalesEmployee
+avarageSalary
+maxPrice
+minPrice

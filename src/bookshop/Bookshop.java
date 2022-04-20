@@ -140,7 +140,7 @@ public class Bookshop {
         a.productSale(145);
         //a.printAllSoldPrintEditions();
         a.productSale(254);
-        a.printAllSoldPrintEditions();
+        //a.printAllSoldPrintEditions();
         a.printEmployeeWithMaxSales();
         a.avarageSalaryEmployee();
     }
