@@ -64,10 +64,10 @@ public class BankRefactoring  extends Bank {
     }
 
     @Override
-    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int number_department) {
+    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
         try {
             Connection connection = dbManager.getConnection();
-            String sql = "insert into clients (id, firstname, lastname, serie, passnumber, email, phone, password, salt, number_department) values (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into clients (id, firstname, lastname, serie, passnumber, email, phone, password, salt, numberDepartment) values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1,number);
             statement.setString(2, name);
@@ -78,7 +78,7 @@ public class BankRefactoring  extends Bank {
             statement.setString(7,phone);
             statement.setString(8,password);
             statement.setString(9,salt);
-            statement.setInt(10,number_department);
+            statement.setInt(10,numberDepartment);
             statement.execute();
             connection.close();
         } catch (SQLException ex) {
