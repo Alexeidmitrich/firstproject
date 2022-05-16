@@ -11,11 +11,11 @@ public class Client extends Person{
     protected String phone;
     protected String password;
     protected String salt;
-    protected int number_department;
+    protected int numberDepartment;
     List<Account> accountList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
 
-    public Client(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int number_department) {
+    public Client(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
         super(name, surname, number);
         this.serie = serie;
         this.passnumber = passnumber;
@@ -23,7 +23,7 @@ public class Client extends Person{
         this.phone = phone;
         this.password = password;
         this.salt = salt;
-        this.number_department = number_department;
+        this.numberDepartment = numberDepartment;
     }
 
     public void  openAccount(Account account) {

@@ -66,8 +66,8 @@ public class NewCommandTool {
             String [] clientData = data.split(";");
             int serie = Integer.parseInt(clientData[3]);
             int number = Integer.parseInt(clientData[0]);
-            int number_department = Integer.parseInt(clientData[9]);
-            bank.addClient(number, clientData[1], clientData[2], serie, clientData[4],clientData[5], clientData[6], clientData[7], clientData[8],number_department );
+            int numberDepartment = Integer.parseInt(clientData[9]);
+            bank.addClient(number, clientData[1], clientData[2], serie, clientData[4],clientData[5], clientData[6], clientData[7], clientData[8],numberDepartment );
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , accountOpen);

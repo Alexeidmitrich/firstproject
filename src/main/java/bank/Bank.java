@@ -34,8 +34,8 @@ public class Bank {
         this.director = director;
     }
 
-    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int number_department) {
-        Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, number_department);
+    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
+        Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, numberDepartment);
         clientList.add(client);
         System.out.println("New client was created");
     }
