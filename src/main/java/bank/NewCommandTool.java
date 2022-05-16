@@ -12,19 +12,20 @@ public class NewCommandTool {
     public void parseCommand(String command) {
         final String bankInfo = "(addbank) ([a-zA-Z]+;[a-zA-Z-]+)";
         final String regexAddDirector = "(adddirector) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+)";
-        final String employeeAdd = "(addEmployee) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String employeeAdd = "(addEmployee) ([0-9]+;[a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
         final String employeeInfo = "(employee)";
-        final String clientAdd = "(addClient) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
-        final String accountOpen = "(openClientAccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
-        final String clientInfo = "(printclientAccount) ([0-9]+)";
-        final String creditOpen = "(creditData) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+;[0-9]+)";
-        final String creditInfo = "(infoCredit) ([0-9]+)";
+        final String clientAdd = "(addclient) ([0-9]+;[a-zA-Zа-яА-Я]+;[a-zA-Zа-яА-Я]+;[0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я@.0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[0-9]+)";
+        final String accountOpen = "(openclientaccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String clientInfoAccount = "(printclientaccount) ([0-9]+)";
+        final String creditOpen = "(creditdata) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+;[0-9]+)";
+        final String creditInfo = "(infocredit) ([0-9]+)";
+        final String clientsInfo = "(clients)";
         Matcher matcher = isPatternMatches(command, bankInfo);
         if (matcher.find()) {
             String data = matcher.group(2);
             System.out.println(data);
             String[] bankData = data.split(";");
-            bank = new Bank(bankData[0], bankData[1]);
+            bank = new BankRefactoring(bankData[0], bankData[1]);
             System.out.println("Ok");
         }
         matcher = isPatternMatches(command, regexAddDirector);
@@ -43,8 +44,9 @@ public class NewCommandTool {
             System.out.println(data);
             String [] employeeData = data.split(";");
             int salary = Integer.parseInt(employeeData[3]);
-            int number = Integer.parseInt(employeeData[2]);
-            bank.addEmployee(employeeData[0], employeeData[1], number, salary);
+            int number = Integer.parseInt(employeeData[0]);
+            int bankid = Integer.parseInt(employeeData[4]);
+            bank.addEmployee(number, employeeData[1], employeeData[2], salary, bankid);
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , employeeInfo);
@@ -52,14 +54,20 @@ public class NewCommandTool {
             bank.printAllEmployees();
             System.out.println("OK");
         }
+        matcher = isPatternMatches(command , clientsInfo);
+        if (matcher.find()){
+            bank.printClients();
+            System.out.println("OK");
+        }
         matcher = isPatternMatches(command , clientAdd);
         if (matcher.find()){
             String data = matcher.group(2);
             System.out.println(data);
             String [] clientData = data.split(";");
-            int ranking = Integer.parseInt(clientData[3]);
-            int number = Integer.parseInt(clientData[2]);
-            bank.addClient(clientData[0], clientData[1], number, ranking);
+            int serie = Integer.parseInt(clientData[3]);
+            int number = Integer.parseInt(clientData[0]);
+            int number_department = Integer.parseInt(clientData[9]);
+            bank.addClient(number, clientData[1], clientData[2], serie, clientData[4],clientData[5], clientData[6], clientData[7], clientData[8],number_department );
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , accountOpen);
@@ -74,7 +82,7 @@ public class NewCommandTool {
             bank.openAccount(numberClient, numberAccount,accountData[2], amount, replenished);
             System.out.println("OK");
         }
-        matcher = isPatternMatches(command , clientInfo);
+        matcher = isPatternMatches(command , clientInfoAccount);
         if (matcher.find()){
             String data = matcher.group(2);
             String [] clientData = data.split(";");

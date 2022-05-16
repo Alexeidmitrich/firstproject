@@ -24,12 +24,18 @@ public class Bank {
            this.director = director;
     }
 
+    public void printClients(){
+        for (int i = 0; i < clientList.size(); i++) {
+            Client client = clientList.get(i);
+            client.printInformation();
+        }
+    }
     public void setDirector(Director director) {
         this.director = director;
     }
 
-    public void addClient(String name, String family, int number, int ranking) {
-        Client client = new Client(name, family, number, ranking);
+    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int number_department) {
+        Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, number_department);
         clientList.add(client);
         System.out.println("New client was created");
     }
@@ -99,8 +105,8 @@ public class Bank {
         }
     }
 
-    public void addEmployee(String name, String surname, int number, int salary){
-        Employee employee = new Employee(name, surname, number, salary);
+    public void addEmployee(int number, String name, String surname, int salary, int bankid) {
+        Employee employee = new Employee(number, name, surname, salary, bankid);
         employeeList.add(employee);
     }
 
@@ -133,12 +139,12 @@ public class Bank {
         Bank b = new Bank("Sberbank","Moskva" , director);
         b.info();
         b.whoIsDirector();
-        b.addEmployee("Vasja", "Ivanov", 100, 1000);
-        b.addEmployee("Masha", "Ivanova", 110, 1000);
+        b.addEmployee(100,"Vasja", "Ivanov",  1000, 9);
+        b.addEmployee(110,"Masha", "Ivanova", 1000, 8);
         b.setNewSalary(100, -1200);
         b.printAllEmployees();
-        b.addClient("Boris", "Pavlov", 5000, 5);
-        b.addClient("Anastasia", "Pavlova", 5001, 5);
+        b.addClient(8, "Boris", "Pavlov", 4003, "754325", "alex@mail.ru", "+79519515151", "43b439fdbd320d266abe07e98e99062c", "9688751387ffbc048846008c7932eb12", 2);
+        //b.addClient("Anastasia", "Pavlova", 5001, 5);
         b.openAccount(5001, 56, "Super account", 50000, true);
         b.printClientAccount(5001);
         b.openCredit(5000,28, "Econom",100000, 12,5);

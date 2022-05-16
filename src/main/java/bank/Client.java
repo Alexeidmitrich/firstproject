@@ -5,13 +5,25 @@ import java.util.List;
 
 public class Client extends Person{
 
-    int ranking;
+    protected int serie;
+    protected String passnumber;
+    protected String email;
+    protected String phone;
+    protected String password;
+    protected String salt;
+    protected int number_department;
     List<Account> accountList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
 
-    public Client(String name, String surname, int number, int ranking) {
+    public Client(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int number_department) {
         super(name, surname, number);
-        this.ranking = ranking;
+        this.serie = serie;
+        this.passnumber = passnumber;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.salt = salt;
+        this.number_department = number_department;
     }
 
     public void  openAccount(Account account) {

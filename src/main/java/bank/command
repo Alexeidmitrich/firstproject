@@ -1,0 +1,9 @@
+addbank Alfa;bank
+adddirector Aleksei;Pushkin;450000
+addEmployee 6;Aleksei;Pushkin;50000;3
+employee
+addclient 9;Svetlana;Alekseeva;4017;432567;lana65@demo.com;65923921;43b439fdbd320d266abe07e98e99062c;9688751387ffbc048846008c7932eb12;1
+openClientAccount 4;2;Super;4;2
+printclientAccount 4
+creditData 4;2;Econom;4;4;5
+infoCredit 4

@@ -27,7 +27,6 @@ public class NewCommandTool {
         if (matcher.find()) {
             String data = matcher.group(2);
             System.out.println(data);
-            String[] bookshopData = data.split(";");
             bookshop = new Bookshop(director);
             System.out.println("Ok");
         }

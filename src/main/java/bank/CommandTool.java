@@ -24,11 +24,13 @@ public class CommandTool {
         int numberEmployee = sc.nextInt();
         System.out.println("Employee's salary");
         int salaryEmployee = sc.nextInt();
+        System.out.println("Employee's bankid");
+        int bankIdEmployee = sc.nextInt();
         Director director = new Director(firstname, lastName, salary);
         director.printInformation();
         Bank bank  = new Bank(title, address, director);
         bank.info();
-        Employee employee = new Employee(nameEmployee, lastNameEmployee, numberEmployee, salaryEmployee);
+        Employee employee = new Employee(numberEmployee, nameEmployee, lastNameEmployee, salaryEmployee, bankIdEmployee);
         employee.printInformation();
     }
 }

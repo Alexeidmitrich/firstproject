@@ -12,6 +12,9 @@ public abstract class Person {
 
     }
 
+    public void printInformation(){
+        System.out.println(getName() + " " + getSurname() + " " + getNumber());
+    }
     public int getNumber() {
         return number;
     }
