@@ -21,5 +21,17 @@ public class Employee extends Person {
             this.salary = salary;
         }
     }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public int getBank_id() {
+        return bank_id;
+    }
+
+    public void setBank_id(int bank_id) {
+        this.bank_id = bank_id;
+    }
 }
 

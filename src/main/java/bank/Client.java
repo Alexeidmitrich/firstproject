@@ -55,4 +55,76 @@ public class Client extends Person{
             }
         }
     }
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public void setSerie(int serie) {
+        this.serie = serie;
+    }
+
+    public String getPassnumber() {
+        return passnumber;
+    }
+
+    public void setPassnumber(String passnumber) {
+        this.passnumber = passnumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public int getNumberDepartment() {
+        return numberDepartment;
+    }
+
+    public void setNumberDepartment(int numberDepartment) {
+        this.numberDepartment = numberDepartment;
+    }
+
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
+    }
+
+    public List<Credit> getCreditList() {
+        return creditList;
+    }
+
+    public void setCreditList(List<Credit> creditList) {
+        this.creditList = creditList;
+    }
 }

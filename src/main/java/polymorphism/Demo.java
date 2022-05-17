@@ -14,11 +14,11 @@ public class Demo {
         Triangle triangle = new Triangle();
        // triangle.area();
        // triangle.perimetr();
-        Shape shape = new Triangle();
+        Shape shape = new Reactangle();
         shape.area();
         shape.perimetr();
 
-
+/*
         List<Shape> list = new ArrayList<>();
         list.add(new Reactangle());
         list.add(new Triangle());
@@ -28,5 +28,7 @@ public class Demo {
             s.perimetr();
             s.area();
         }
+
+ */
     }
 }
