@@ -1,6 +1,6 @@
 package bank.database;
 
-import bank.Client;
+import bank.BankDepartment;
 import bank.Employee;
 
 import java.sql.*;
@@ -15,10 +15,16 @@ public class EmployeeDAOImpl extends DBManager implements EmployeeDAO{
         Connection connection = getConnection();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select idemployee, firstname, lastname, salary from employee");
+
+            String sql =  "select idemployee, firstname, lastname, salary, bank_id, city from employee e" +
+                    " inner join bank b on e.bank_id = b.bankid ";
+            ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()) {
                 //System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4));
-                Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+                BankDepartment bankDepartment = new BankDepartment(rs.getInt("bank_id"), rs.getString("city"));
+                Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), bankDepartment);
+                employeeList.add(employee);
             }
             connection.close();
         } catch (SQLException ex) {
@@ -32,12 +38,15 @@ public class EmployeeDAOImpl extends DBManager implements EmployeeDAO{
         Employee employee = null;
         Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("select idemployee, firstname, lastname, salary, bank_id from employee " +
-                    " WHERE idemployee = ?");
+            String sql =  "select idemployee, firstname, lastname, salary, bank_id, city from employee e" +
+                            " inner join bank b on e.bank_id = b.bank " +
+                             " WHERE idemployee = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             rs.next();
-            employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+            BankDepartment bankDepartment = new BankDepartment(rs.getInt("bank_id"), rs.getString("city"));
+            employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), bankDepartment);
 
             connection.close();
         } catch (SQLException ex) {
@@ -47,16 +56,15 @@ public class EmployeeDAOImpl extends DBManager implements EmployeeDAO{
     }
 
     @Override
-    public void save(Employee employee) {
+    public void save(Employee employee, int departmentId) {
         try {
             Connection connection = getConnection();
-            String sql = "insert into employee (idemployee, firstname, lastname, salary, bank_id) values (?,?,?,?,?)";
+            String sql = "insert into employee (firstname, lastname, salary, bank_id) values (?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,employee.getNumber());
-            statement.setString(2, employee.getName());
-            statement.setString(3, employee.getSurname());
-            statement.setInt(4, employee.getSalary());
-            statement.setInt(5,employee.getBank_id());
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getSurname());
+            statement.setDouble(3, employee.getSalary());
+            statement.setInt(4, departmentId);
             statement.execute();
             connection.close();
         } catch (SQLException ex) {

@@ -2,36 +2,46 @@ package bank;
 
 public class Employee extends Person {
 
-    protected int salary;
-    protected int bank_id;
+    protected double salary;
+    //protected int bankid;
+    protected BankDepartment bankDepartment;
 
-
-    public Employee(int number, String name, String surname, int salary, int bank_id) {
+    public Employee(int number, String name, String surname, double salary, BankDepartment bankDepartment) {
         super(name, surname, number);
         this.salary = salary;
-        this.bank_id = bank_id;
+        this.bankDepartment = bankDepartment;
     }
 
-    public void printInformation(){
-        System.out.println(getNumber() + " " + getName() + " " + getSurname() + " "  + salary);
+    public Employee(int number, String name, String surname,  double salary) {
+        super(name, surname, number);
+        this.salary = salary;
     }
 
-    public void setSalary(int salary) {
+    public Employee(String name, String surname, double salary) {
+        super(name, surname);
+        this.salary = salary;
+    }
+
+    public void printAllEmployee(){
+        System.out.println(getNumber() + " " + getName() + " " + getSurname() +  getSalary() + " " + bankDepartment.getCity());
+    }
+
+    public void setSalary(double salary) {
         if (salary > 0) {
             this.salary = salary;
         }
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public int getBank_id() {
-        return bank_id;
+    public BankDepartment getBankDepartment() {
+        return bankDepartment;
     }
 
-    public void setBank_id(int bank_id) {
-        this.bank_id = bank_id;
+    public void setBankDepartment(BankDepartment bankDepartment) {
+        this.bankDepartment = bankDepartment;
     }
 }
 

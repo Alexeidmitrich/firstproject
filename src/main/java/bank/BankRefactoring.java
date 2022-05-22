@@ -2,7 +2,6 @@ package bank;
 
 import bank.database.*;
 
-import java.sql.*;
 import java.util.List;
 
 public class BankRefactoring  extends Bank {
@@ -20,11 +19,11 @@ public class BankRefactoring  extends Bank {
     }
 
     @Override
-    public void printAllEmployees() {
+    public void printEmployees() {
         List<Employee> employees = employeeDAO.getAllEmployee();
         for (int i = 0; i < employees.size(); i++) {
             Employee employee =  employees.get(i);
-            employee.printInformation();
+            employee.printAllEmployee();
         }
     }
 
@@ -46,9 +45,9 @@ public class BankRefactoring  extends Bank {
         }
     }
     @Override
-    public void addEmployee(int number, String name, String surname, int salary, int bankid) {
-        Employee employee = new Employee(number, name, surname, salary, bankid);
-        employeeDAO.save(employee);
+    public void addEmployee(String name, String surname, double salary, int bankid) {
+        Employee employee = new Employee( name, surname, salary);
+        employeeDAO.save(employee, bankid);
     }
 
 

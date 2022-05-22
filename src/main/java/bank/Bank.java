@@ -100,8 +100,8 @@ public class Bank {
         }
     }
 
-    public void addEmployee(int number, String name, String surname, int salary, int bankid) {
-        Employee employee = new Employee(number, name, surname, salary, bankid);
+    public void addEmployee(String name, String surname, double salary, int bankid) {
+        Employee employee = new Employee(name, surname, salary);
         employeeList.add(employee);
     }
 
@@ -114,10 +114,10 @@ public class Bank {
             }
         }
     }
-    public void printAllEmployees() {
+    public void printEmployees() {
         for (int i = 0; i < employeeList.size(); i++) {
-          Employee result = employeeList.get(i);
-          result.printInformation();
+          Employee employee = employeeList.get(i);
+          employee.printAllEmployee();
         }
     }
 
@@ -134,10 +134,10 @@ public class Bank {
         Bank b = new Bank("Sberbank","Moskva" , director);
         b.info();
         b.whoIsDirector();
-        b.addEmployee(100,"Vasja", "Ivanov",  1000, 9);
-        b.addEmployee(110,"Masha", "Ivanova", 1000, 8);
+        b.addEmployee("Vasja", "Ivanov",  1000, 9);
+        b.addEmployee("Masha", "Ivanova", 1000, 8);
         b.setNewSalary(100, -1200);
-        b.printAllEmployees();
+        b.printEmployees();
         b.addClient(8, "Boris", "Pavlov", 4003, "754325", "alex@mail.ru", "+79519515151", "43b439fdbd320d266abe07e98e99062c", "9688751387ffbc048846008c7932eb12", 2);
         //b.addClient("Anastasia", "Pavlova", 5001, 5);
         b.openAccount(5001, 56, "Super account", 50000, true);
