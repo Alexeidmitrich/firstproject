@@ -12,6 +12,11 @@ public abstract class Person {
 
     }
 
+    public Person(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
     public void printInformation(){
         System.out.println(getName() + " " + getSurname() + " " + getNumber());
     }
