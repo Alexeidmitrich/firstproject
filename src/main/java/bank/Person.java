@@ -1,15 +1,26 @@
 package bank;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance
 public abstract class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int number;
+    @Column(name = "firstname",nullable = false, length = 50)
     private String name;
+    @Column(name="lastname", nullable = false, length = 55)
     private String surname;
 
-    public Person(String name, String surname, int number) {
+    public Person() {
+    }
+
+    public Person(int number, String name, String surname) {
+        this.number = number;
         this.name = name;
         this.surname = surname;
-        this.number = number;
-
     }
 
     public Person(String name, String surname) {

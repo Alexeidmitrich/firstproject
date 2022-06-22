@@ -1,19 +1,22 @@
 package bank;
 
-public class Employee extends Person {
+import javax.persistence.Column;
 
-    protected double salary;
-    //protected int bankid;
-    protected BankDepartment bankDepartment;
+
+public class Employee extends Person {
+    @Column(nullable = false, length = 10)
+
+    private double salary;
+    private BankDepartment bankDepartment;
 
     public Employee(int number, String name, String surname, double salary, BankDepartment bankDepartment) {
-        super(name, surname, number);
+        super(number, name, surname);
         this.salary = salary;
         this.bankDepartment = bankDepartment;
     }
 
     public Employee(int number, String name, String surname,  double salary) {
-        super(name, surname, number);
+        super(number, name, surname);
         this.salary = salary;
     }
 

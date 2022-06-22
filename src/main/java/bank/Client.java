@@ -1,22 +1,41 @@
 package bank;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "clients")
 public class Client extends Person{
+    @Column(nullable = false, length = 10)
 
     protected int serie;
+    @Column(nullable = false, length = 15)
     protected String passnumber;
+    @Column(nullable = false, length = 35)
     protected String email;
+    @Column(nullable = false, length = 12)
     protected String phone;
+    @Column(nullable = false, length = 500)
     protected String password;
+    @Column(nullable = false, length = 200)
     protected String salt;
+    @Column(nullable = false, length = 45)
     protected int numberDepartment;
+    @Transient
     List<Account> accountList = new ArrayList<>();
+    @Transient
     List<Credit> creditList = new ArrayList<>();
 
+    public Client() {
+
+    }
+
     public Client(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
-        super(name, surname, number);
+        super(number, name, surname);
         this.serie = serie;
         this.passnumber = passnumber;
         this.email = email;
@@ -25,7 +44,16 @@ public class Client extends Person{
         this.salt = salt;
         this.numberDepartment = numberDepartment;
     }
-
+    public Client(String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment){
+        super(name, surname);
+        this.serie = serie;
+        this.passnumber = passnumber;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.salt = salt;
+        this.numberDepartment = numberDepartment;
+    }
     public void  openAccount(Account account) {
         accountList.add(account);
     }

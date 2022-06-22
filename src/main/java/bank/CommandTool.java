@@ -1,36 +1,30 @@
 package bank;
 
-import bank.database.EmployeeDAOImpl;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NewCommandTool {
+public class CommandTool {
 
     private Bank bank;
+    private BankRefactoring bankRefactoring;
+    public CommandTool(){
+        bankRefactoring = new BankRefactoring();
+    }
 
 
     public void parseCommand(String command) {
-        final String addBank = "(addbank) ([a-zA-Z]+;[a-zA-Z-]+)";
+        final String addBank = "(addbank) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
         final String regexAddDirector = "(adddirector) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+)";
-        final String employeeAdd = "(addEmployee) ([a-zA-Z]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
+        final String addEmployee = "(addEmployee) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
         final String employeeInfo = "(employee)";
-        final String clientAdd = "(addclient) ([0-9]+;[a-zA-Zа-яА-Я]+;[a-zA-Zа-яА-Я]+;[0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я@.0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[0-9]+)";
+        final String addClient = "(addclient) ([a-zA-Zа-яА-Я]+;[a-zA-Zа-яА-Я]+;[0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я@.0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[0-9]+)";
         final String accountOpen = "(openclientaccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
         final String clientInfoAccount = "(printclientaccount) ([0-9]+)";
         final String creditOpen = "(creditdata) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+;[0-9]+)";
         final String creditInfo = "(infocredit) ([0-9]+)";
         final String clientsInfo = "(clients)";
-        Matcher matcher = isPatternMatches(command, addBank);
-        if (matcher.find()) {
-            String data = matcher.group(2);
-            System.out.println(data);
-            String[] bankData = data.split(";");
-            bank = new BankRefactoring(bankData[0], bankData[1]);
-            System.out.println("Ok");
-        }
-        matcher = isPatternMatches(command, regexAddDirector);
+        Matcher matcher = isPatternMatches(command, regexAddDirector);
         if (matcher.find()) {
             String data = matcher.group(2);
             System.out.println(data);
@@ -40,15 +34,22 @@ public class NewCommandTool {
             bank.setDirector(director);
             System.out.println("OK");
         }
-        matcher = isPatternMatches(command , employeeAdd);
+        matcher = isPatternMatches(command, addBank);
+        if (matcher.find()) {
+            String data = matcher.group(2);
+            System.out.println(data);
+            String[] bankData = data.split(";");
+            bankRefactoring.addBank(bankData[0]);
+            System.out.println("Ok");
+        }
+        matcher = isPatternMatches(command , addEmployee);
         if (matcher.find()){
             String data = matcher.group(2);
             System.out.println(data);
             String [] employeeData = data.split(";");
             int salary = Integer.parseInt(employeeData[2]);
-
             int bankid = Integer.parseInt(employeeData[3]);
-            bank.addEmployee(employeeData[0], employeeData[1], salary, bankid);
+            bankRefactoring.addEmployee(employeeData[0], employeeData[1], salary, bankid);
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , employeeInfo);
@@ -61,15 +62,14 @@ public class NewCommandTool {
             bank.printClients();
             System.out.println("OK");
         }
-        matcher = isPatternMatches(command , clientAdd);
+        matcher = isPatternMatches(command , addClient);
         if (matcher.find()){
             String data = matcher.group(2);
             System.out.println(data);
             String [] clientData = data.split(";");
-            int serie = Integer.parseInt(clientData[3]);
-            int number = Integer.parseInt(clientData[0]);
-            int numberDepartment = Integer.parseInt(clientData[9]);
-            bank.addClient(number, clientData[1], clientData[2], serie, clientData[4],clientData[5], clientData[6], clientData[7], clientData[8],numberDepartment );
+            int serie = Integer.parseInt(clientData[2]);
+            int numberDepartment = Integer.parseInt(clientData[8]);
+            bankRefactoring.addClient(clientData[0], clientData[1], serie, clientData[3],clientData[4], clientData[5], clientData[6], clientData[7],numberDepartment );
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , accountOpen);
@@ -123,7 +123,7 @@ public class NewCommandTool {
     }
     public static void main(String[] args) {
         //adddirector Max;Ivanov;50000
-        NewCommandTool commandTool = new NewCommandTool();
+        CommandTool commandTool = new CommandTool();
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Please, type a command");

@@ -1,6 +1,9 @@
 package bank.database;
 
 import bank.Client;
+import bank.database.hibernate.HiberUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -50,7 +53,13 @@ public class ClientDAOImpl extends  DBManager implements ClientDAO{
 
     @Override
     public void save(Client client) {
-        try {
+        SessionFactory factory = HiberUtil.getSessionFactory();
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(client);
+        session.getTransaction().commit();
+        factory.close();
+      /*  try {
             Connection connection = getConnection();
             String sql = "insert into clients (id, firstname, lastname, serie, passnumber, email, phone, password, salt, numberDepartment) values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -68,13 +77,6 @@ public class ClientDAOImpl extends  DBManager implements ClientDAO{
             connection.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
-
-    public static void main(String[] args) {
-        ClientDAO dao  = new ClientDAOImpl();
-        Client client = dao.getClientById(11);
-        client.printInformation();
-    }
-
 }
