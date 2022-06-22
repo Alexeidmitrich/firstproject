@@ -1,24 +1,24 @@
 package bank;
 
-import javax.persistence.Column;
-
-
+import javax.persistence.*;
+import javax.persistence.Entity;
+@Entity
+@Table(name = "employee")
 public class Employee extends Person {
     @Column(nullable = false, length = 10)
 
     private double salary;
-    private BankDepartment bankDepartment;
 
-    public Employee(int number, String name, String surname, double salary, BankDepartment bankDepartment) {
+
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //private Director director;
+
+    public Employee(int number, String name, String surname, double salary) {
         super(number, name, surname);
         this.salary = salary;
-        this.bankDepartment = bankDepartment;
+
     }
 
-    public Employee(int number, String name, String surname,  double salary) {
-        super(number, name, surname);
-        this.salary = salary;
-    }
 
     public Employee(String name, String surname, double salary) {
         super(name, surname);
@@ -26,7 +26,7 @@ public class Employee extends Person {
     }
 
     public void printAllEmployee(){
-        System.out.println(getNumber() + " " + getName() + " " + getSurname() +  getSalary() + " " + bankDepartment.getCity());
+        System.out.println(getNumber() + " " + getName() + " " + getSurname() +  getSalary());
     }
 
     public void setSalary(double salary) {
@@ -39,12 +39,5 @@ public class Employee extends Person {
         return salary;
     }
 
-    public BankDepartment getBankDepartment() {
-        return bankDepartment;
-    }
-
-    public void setBankDepartment(BankDepartment bankDepartment) {
-        this.bankDepartment = bankDepartment;
-    }
 }
 

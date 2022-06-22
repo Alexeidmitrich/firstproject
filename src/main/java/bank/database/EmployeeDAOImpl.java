@@ -36,13 +36,13 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     }
 
    @Override
-    public void save(Employee employee, int departmentId) {
-        SessionFactory factory = HiberUtil.getSessionFactory();
-        Session session = factory.openSession();
-        session.beginTransaction();
-        session.save(String.valueOf(employee), departmentId);
-        session.getTransaction().commit();
-        factory.close();
+    public void save(Employee employee) {
+       SessionFactory factory = HiberUtil.getSessionFactory();
+       Session session = factory.openSession();
+       session.beginTransaction();
+       session.save(employee);
+       session.getTransaction().commit();
+       factory.close();
     }
 }
 

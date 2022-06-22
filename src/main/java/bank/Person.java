@@ -3,7 +3,8 @@ package bank;
 import javax.persistence.*;
 
 @Entity
-@Inheritance
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "person")
 public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

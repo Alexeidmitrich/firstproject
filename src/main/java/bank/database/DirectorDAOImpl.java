@@ -1,46 +1,46 @@
 package bank.database;
 
-import bank.Client;
+import bank.Director;
+import bank.Employee;
 import bank.database.hibernate.HiberUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import java.util.List;
 
-public class ClientDAOImpl implements ClientDAO{
-
-
+public class DirectorDAOImpl implements DirectorDAO {
     @Override
-    public List<Client> getAllClient() {
+    public List<Director> getAllDirector() {
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        List<Client> client = session.
-                createQuery("FROM Client").
-                getResultList();
+        List<Director> director = session
+                .createQuery("FROM Director")
+                .getResultList();
         session.getTransaction().commit();
         factory.close();
-        return client;
+        return  director;
     }
 
     @Override
-    public Client getClientById(int id) {
-        Client client = null;
+    public Director getDirectorById(int id) {
+        Director director = null;
         SessionFactory factory = HiberUtil.getSessionFactory();
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            client = session.get(Client.class, id);
+            director = session.get(Director.class, id);
             session.getTransaction().commit();
             factory.close();
-            return client;
+            return director;
         }
     }
 
     @Override
-    public void save(Client client) {
+    public void save(Director director) {
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        session.save(client);
+        session.save(director);
         session.getTransaction().commit();
         factory.close();
     }

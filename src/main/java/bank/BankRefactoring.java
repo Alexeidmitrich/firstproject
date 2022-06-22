@@ -5,14 +5,11 @@ import bank.database.*;
 import java.util.List;
 
 public class BankRefactoring {
-    private String title;
-    private String address;
-    private Director director;
 
-    private DBManager dbManager = new DBManager();
     private ClientDAO clientDAO = new ClientDAOImpl();
     private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
     private BankDepartmentDAO bankDepartmentDAO = new BankDepartmentsDAOImpl();
+    private DirectorDAO directorDAO = new DirectorDAOImpl();
 
     public void addClient(String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
         Client client = new Client(name, surname, serie, passnumber, email, phone, password, salt, numberDepartment);
@@ -21,6 +18,10 @@ public class BankRefactoring {
     public void addBank(String city){
         BankDepartment bankDepartment = new BankDepartment(city);
         bankDepartmentDAO.save(bankDepartment);
+    }
+    public void addDirector(String name,String surname, double salary){
+        Director director = new Director(name, surname,salary);
+        directorDAO.save(director);
     }
 
     public void printEmployees() {
@@ -39,8 +40,8 @@ public class BankRefactoring {
         }
     }
 
-    public void addEmployee(String name, String surname, double salary, int bankid) {
+    public void addEmployee(String name, String surname, double salary) {
         Employee employee = new Employee(name, surname, salary);
-        employeeDAO.save(employee, bankid);
+        employeeDAO.save(employee);
     }
 }
