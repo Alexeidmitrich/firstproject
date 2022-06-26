@@ -13,8 +13,4 @@ public class Account extends BankProduct {
        this(id, title, 0, replenished );
     }
 
-    //OneToMany  ManyToOne Hibernate
-    /*
-     Вам встретятся такие слова EAGER LAZY. LAZY мо;ет выдавать оши,ку/ Используйте  EAGER
-     */
 }

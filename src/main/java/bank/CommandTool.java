@@ -16,7 +16,7 @@ public class CommandTool {
     public void parseCommand(String command) {
         final String addBank = "(addbank) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
         final String addDirector = "(adddirector) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
-        final String addEmployee = "(addEmployee) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
+        final String addEmployee = "(addemployee) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;)";
         final String employeeInfo = "(employee)";
         final String addClient = "(addclient) ([a-zA-Zа-яА-Я]+;[a-zA-Zа-яА-Я]+;[0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я@.0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[0-9]+)";
         final String accountOpen = "(openclientaccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
@@ -52,12 +52,12 @@ public class CommandTool {
         }
         matcher = isPatternMatches(command , employeeInfo);
         if (matcher.find()){
-            bank.printEmployees();
+            bankRefactoring.printEmployees();
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , clientsInfo);
         if (matcher.find()){
-            bank.printClients();
+            bankRefactoring.printClients();
             System.out.println("OK");
         }
         matcher = isPatternMatches(command , addClient);

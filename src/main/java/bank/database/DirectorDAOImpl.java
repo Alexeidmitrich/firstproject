@@ -1,7 +1,6 @@
 package bank.database;
 
 import bank.Director;
-import bank.Employee;
 import bank.database.hibernate.HiberUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

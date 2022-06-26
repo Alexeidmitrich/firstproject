@@ -11,7 +11,6 @@ import java.util.List;
 public class ClientDAONewImpl  implements ClientDAO{
     @Override
     public List<Client> getAllClient() {
-
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();

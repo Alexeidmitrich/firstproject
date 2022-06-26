@@ -30,9 +30,6 @@ public class Bank {
             client.printInformation();
         }
     }
-    public void setDirector(Director director) {
-        this.director = director;
-    }
 
     public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
         Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, numberDepartment);
@@ -100,16 +97,11 @@ public class Bank {
         }
     }
 
-    public void addEmployee(String name, String surname, double salary, int bankid) {
-        Employee employee = new Employee(name, surname, salary);
-        employeeList.add(employee);
-    }
-
     public void setNewSalary(int numberEmployee, int salary) {
         for (int i = 0; i < employeeList.size(); i++) {
             Employee emp  = employeeList.get(i);
             if (emp.getNumber() ==  numberEmployee) {
-                emp.setSalary( salary);
+                emp.setSalary(salary);
                 break;
             }
         }
@@ -117,7 +109,7 @@ public class Bank {
     public void printEmployees() {
         for (int i = 0; i < employeeList.size(); i++) {
           Employee employee = employeeList.get(i);
-          employee.printAllEmployee();
+          employee.printEmployee();
         }
     }
 
@@ -134,8 +126,6 @@ public class Bank {
         Bank b = new Bank("Sberbank","Moskva" , director);
         b.info();
         b.whoIsDirector();
-        b.addEmployee("Vasja", "Ivanov",  1000, 9);
-        b.addEmployee("Masha", "Ivanova", 1000, 8);
         b.setNewSalary(100, -1200);
         b.printEmployees();
         b.addClient(8, "Boris", "Pavlov", 4003, "754325", "alex@mail.ru", "+79519515151", "43b439fdbd320d266abe07e98e99062c", "9688751387ffbc048846008c7932eb12", 2);

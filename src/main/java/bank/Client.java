@@ -23,8 +23,9 @@ public class Client extends Person{
     protected String password;
     @Column(nullable = false, length = 200)
     protected String salt;
-    @Column(nullable = false, length = 45)
-    protected int numberDepartment;
+    //@Column(name="number_department")
+    @Transient
+    protected BankDepartment bankDepartment;
     @Transient
     List<Account> accountList = new ArrayList<>();
     @Transient
@@ -34,25 +35,25 @@ public class Client extends Person{
 
     }
 
-    public Client(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
-        super(number, name, surname);
+    public Client(int number,String firstname,String lastname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
+        super(number, firstname, lastname);
         this.serie = serie;
         this.passnumber = passnumber;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.salt = salt;
-        this.numberDepartment = numberDepartment;
+       // this.numberDepartment = numberDepartment;//TODO fix
     }
-    public Client(String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment){
-        super(name, surname);
+    public Client(String firstname,String lastname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment){
+        super(firstname, lastname);
         this.serie = serie;
         this.passnumber = passnumber;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.salt = salt;
-        this.numberDepartment = numberDepartment;
+       // this.numberDepartment = numberDepartment;//TODO fix
     }
     public void  openAccount(Account account) {
         accountList.add(account);
@@ -88,71 +89,31 @@ public class Client extends Person{
         return serie;
     }
 
-    public void setSerie(int serie) {
-        this.serie = serie;
-    }
-
     public String getPassnumber() {
         return passnumber;
-    }
-
-    public void setPassnumber(String passnumber) {
-        this.passnumber = passnumber;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhone() {
         return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getSalt() {
         return salt;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public BankDepartment getBankDepartment() {
+        return bankDepartment;
     }
 
-    public int getNumberDepartment() {
-        return numberDepartment;
-    }
-
-    public void setNumberDepartment(int numberDepartment) {
-        this.numberDepartment = numberDepartment;
-    }
-
-    public List<Account> getAccountList() {
-        return accountList;
-    }
-
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
-    }
-
-    public List<Credit> getCreditList() {
-        return creditList;
-    }
-
-    public void setCreditList(List<Credit> creditList) {
-        this.creditList = creditList;
+    public void printClient(){
+        System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() + " " + getBankDepartment());
     }
 }
