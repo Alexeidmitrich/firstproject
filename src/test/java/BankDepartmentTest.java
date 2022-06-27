@@ -1,6 +1,4 @@
-package bank;
-
-
+import bank.BankDepartment;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +19,7 @@ public class BankDepartmentTest {
     @Test
     public void serializition() throws JAXBException {
         Marshaller marshaller = this.context.createMarshaller();
-        marshaller.marshal(new BankDepartment(1, "Orel"), new File("bank.xml"));
+        //marshaller.marshal(new BankDepartment(1, "Orel"), new File("bank.xml"));
 
         Unmarshaller unmarshaller = this.context.createUnmarshaller();
         Object unmarshalled = unmarshaller.unmarshal(new File("bank.xml"));
