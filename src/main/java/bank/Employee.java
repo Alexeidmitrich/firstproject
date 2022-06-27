@@ -8,10 +8,10 @@ public class Employee extends Person {
     @Column
     protected double salary;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "number_department", nullable = false)
     protected BankDepartment bankDepartment;
-
+*/
     public Employee(int number, String firstname, String lastname, double salary) {
         super(number, firstname, lastname);
         this.salary = salary;
@@ -25,7 +25,7 @@ public class Employee extends Person {
     public Employee(String firstname, String lastname, BankDepartment bankDepartment, double salary) {
         super(firstname, lastname);
         this.salary = salary;
-        this.bankDepartment = bankDepartment;
+  //      this.bankDepartment = bankDepartment;
     }
     public Employee(){
     }

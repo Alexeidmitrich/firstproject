@@ -16,7 +16,7 @@ public class HiberUtil {
             configuration.addAnnotatedClass(Person.class);
             configuration.addAnnotatedClass(Employee.class);
             configuration.addAnnotatedClass(Director.class);
-            configuration.addAnnotatedClass(BankDepartment.class);
+           // configuration.addAnnotatedClass(BankDepartment.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
 

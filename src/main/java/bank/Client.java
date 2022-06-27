@@ -24,8 +24,8 @@ public class Client extends Person{
     @Column(nullable = false, length = 200)
     protected String salt;
     //@Column(name="number_department")
-    @Transient
-    protected BankDepartment bankDepartment;
+  //  @Transient
+   // protected BankDepartment bankDepartment;
     @Transient
     List<Account> accountList = new ArrayList<>();
     @Transient
@@ -109,11 +109,13 @@ public class Client extends Person{
         return salt;
     }
 
-    public BankDepartment getBankDepartment() {
+    /*public BankDepartment getBankDepartment() {
         return bankDepartment;
     }
 
+     */
+
     public void printClient(){
-        System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() + " " + getBankDepartment());
+        System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() + " " );
     }
 }
