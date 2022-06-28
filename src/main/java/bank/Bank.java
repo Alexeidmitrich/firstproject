@@ -1,16 +1,23 @@
 package bank;
 
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@XmlRootElement
+@XmlAccessorType
 public class Bank {
 
     String title;
     String address;
+    @XmlElement
     Director director;
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
+    @XmlElementWrapper(name = "bankDepartments")
+    List<BankDepartment> bankDepartments = new ArrayList<>();
+
 
 
     public Bank(String title, String address) {
@@ -23,12 +30,15 @@ public class Bank {
            this.address = address;
            this.director = director;
     }
+    public Bank(){
+    }
 
-    public void printClients(){
-        for (int i = 0; i < clientList.size(); i++) {
-            Client client = clientList.get(i);
-            client.printInformation();
-        }
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "director=" + director +
+                ", bankDepartments=" + bankDepartments +
+                '}';
     }
 
     public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
@@ -121,6 +131,7 @@ public class Bank {
         System.out.println(title + " " + address);
     }
 
+
     public static void main(String[] args) {
         Director director = new Director("Alex", "A", 50000);
         Bank b = new Bank("Sberbank","Moskva" , director);
@@ -135,4 +146,5 @@ public class Bank {
         b.openCredit(5000,28, "Econom",100000, 12,5);
         b.printClientCredit(5000);
     }
+
 }

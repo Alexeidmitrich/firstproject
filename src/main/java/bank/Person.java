@@ -41,6 +41,15 @@ public abstract class Person {
         return lastname;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "number=" + number +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
     public void printInformation(){
         System.out.println(getFirstname() + " " + getLastname() + " " + getNumber());
     }

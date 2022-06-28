@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><bankDepartment><id>1</id><city>Orel</city></bankDepartment>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bank>
+    <bankDepartments>
+        <bankDepartment>
+            <id>1</id>
+            <city>Орел</city>
+        </bankDepartment>
+        <bankDepartment>
+            <id>2</id>
+            <city>Курск</city>
+        </bankDepartment>
+        <bankDepartment>
+            <id>3</id>
+            <city>Владивосток</city>
+        </bankDepartment>
+    </bankDepartments>
+    <director>
+        <firstname>Андрей</firstname>
+        <lastname>Жуков</lastname>
+        <salary>650000</salary>
+    </director>
+    <title>Лычково</title>
+</bank>

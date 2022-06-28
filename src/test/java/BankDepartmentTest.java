@@ -1,4 +1,6 @@
+import bank.Bank;
 import bank.BankDepartment;
+import bank.Director;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,15 +16,17 @@ public class BankDepartmentTest {
     @Before
     public void init() throws JAXBException {
         this.context = JAXBContext.newInstance(BankDepartment.class);
+        this.context = JAXBContext.newInstance(Director.class);
+        this.context = JAXBContext.newInstance(Bank.class);
     }
 
     @Test
     public void serializition() throws JAXBException {
         Marshaller marshaller = this.context.createMarshaller();
-        //marshaller.marshal(new BankDepartment(1, "Orel"), new File("bank.xml"));
+        //marshaller.marshal(new BankDepartment(1, "Орел"), new File("bank.xml"));
 
         Unmarshaller unmarshaller = this.context.createUnmarshaller();
         Object unmarshalled = unmarshaller.unmarshal(new File("bank.xml"));
         System.out.println(unmarshalled);
     }
-    }
+}

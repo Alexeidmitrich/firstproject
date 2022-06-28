@@ -12,6 +12,9 @@ public class Director extends Person {
         super(0, firstname, lastname);
         this.salary = salary;
     }
+    public Director(){
+
+    }
 
     public double getSalary() {
         return salary;
@@ -21,4 +24,5 @@ public class Director extends Person {
         System.out.println(getFirstname() + " " + getLastname() + " " + getSalary());
 
     }
+
 }
