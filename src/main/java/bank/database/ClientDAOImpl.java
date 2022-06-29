@@ -8,18 +8,17 @@ import java.util.List;
 
 public class ClientDAOImpl implements ClientDAO{
 
-
     @Override
     public List<Client> getAllClient() {
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        List<Client> client = session.
+        List<Client> clients = session.
                 createQuery("FROM Client").
                 getResultList();
         session.getTransaction().commit();
         factory.close();
-        return client;
+        return clients;
     }
 
     @Override

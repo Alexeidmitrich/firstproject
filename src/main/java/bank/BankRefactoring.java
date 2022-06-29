@@ -6,16 +6,16 @@ import java.util.List;
 public class BankRefactoring {
 
     private ClientDAO clientDAO = new ClientDAOImpl();
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
     private BankDepartmentDAO bankDepartmentDAO = new BankDepartmentsDAOImpl();
     private DirectorDAO directorDAO = new DirectorDAOImpl();
+    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
     public void addBank(String city){
         BankDepartment bankDepartment = new BankDepartment(city);
         bankDepartmentDAO.save(bankDepartment);
     }
     public void addDirector(String firstname, String lastname, double salary){
-        Director director = new Director(firstname, lastname,salary);
+        Director director = new Director(firstname, lastname, salary);
         directorDAO.save(director);
     }
     public void addEmployee(String firstname, String lastname, double salary) {

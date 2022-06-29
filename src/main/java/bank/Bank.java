@@ -14,8 +14,8 @@ public class Bank {
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
+    @XmlElement
     BankDepartmentList bankDepartments;
-
 
 
     public Bank(String title, String address) {
@@ -23,114 +23,127 @@ public class Bank {
         this.address = address;
     }
 
-    public Bank(String title, String address, Director director){
-           this. title  = title;
-           this.address = address;
-           this.director = director;
-    }
-    public Bank(){
+    public Bank(String title, String address, Director director) {
+        this.title = title;
+        this.address = address;
+        this.director = director;
     }
 
-    @Override
-    public String toString() {
-        return "Bank{" +
-                "title='" + title + '\'' +
-                ", director=" + director +
-                ", bankDepartments=" + bankDepartments +
-                '}';
+    public Bank() {
     }
 
-    public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
-        Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, numberDepartment);
-        clientList.add(client);
-        System.out.println("New client was created");
-    }
-
-    public  void openCredit(int numberClient, int numberCredit, String title, int amount, int month, int ranking){
-        Credit credit = new Credit(numberCredit, title, amount, month, ranking);
-        boolean isApproved = false;
-        for (int i = 0; i < clientList.size(); i++) {
-           Client client = clientList.get(i);
-           if(client.getNumber() == numberClient && ranking >= 5) {
-             client.openCredit(credit);
-             System.out.println("Credit is approved");
-             isApproved = true;
-             break;
-           }
+        @Override
+        public String toString() {
+            return "Bank{" +
+                    "title='" + title + '\'' +
+                    ", director=" + director +
+                    ", bankDepartments=" + bankDepartments +
+                    '}';
         }
 
-           if(!isApproved){
-             System.out.println("Client id " + numberClient + " is not exist");
+        public void addClient(int number, String name, String surname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment) {
+            Client client = new Client(number, name, surname, serie, passnumber, email, phone, password, salt, numberDepartment);
+            clientList.add(client);
+            System.out.println("New client was created");
         }
-    }
 
-    public void printClientCredit(int numberClient) {
-        for (int i = 0; i < clientList.size(); i++) {
-            Client client  = clientList.get(i);
-            if (client.getNumber() ==  numberClient) {
-                client.printCredit();
-                break;
+        public void openCredit(int numberClient, int numberCredit, String title, int amount, int month, int ranking) {
+            Credit credit = new Credit(numberCredit, title, amount, month, ranking);
+            boolean isApproved = false;
+            for (int i = 0; i < clientList.size(); i++) {
+                Client client = clientList.get(i);
+                if (client.getNumber() == numberClient && ranking >= 5) {
+                    client.openCredit(credit);
+                    System.out.println("Credit is approved");
+                    isApproved = true;
+                    break;
+                }
             }
-        }
-    }
 
-    public void openAccount(int numberClient, int numberAccount, String title, int amount, boolean replenished){
-        Account account = new Account(numberAccount, title, amount, replenished);
-        openAccount(account, numberClient);
-
-    }
-    public void openAccount(Account account, int numberClient){
-        boolean isOpend = false;
-        for (int i = 0; i < clientList.size(); i++) {
-            Client client  = clientList.get(i);
-            if (client.getNumber() ==  numberClient) {
-                client.openAccount(account);
-                System.out.println("Account is opened");
-                isOpend = true;
-                break;
+            if (!isApproved) {
+                System.out.println("Client id " + numberClient + " is not exist");
             }
         }
 
-        if (!isOpend){
-            System.out.println("Client id " + numberClient + " is not exist");
-        }
-    }
-
-    public void printClientAccount(int numberClient) {
-        for (int i = 0; i < clientList.size(); i++) {
-            Client client  = clientList.get(i);
-            if (client.getNumber() ==  numberClient) {
-                client.printAccount();
-                break;
+        public void printClientCredit(int numberClient) {
+            for (int i = 0; i < clientList.size(); i++) {
+                Client client = clientList.get(i);
+                if (client.getNumber() == numberClient) {
+                    client.printCredit();
+                    break;
+                }
             }
         }
-    }
 
-    public void setNewSalary(int numberEmployee, int salary) {
-        for (int i = 0; i < employeeList.size(); i++) {
-            Employee emp  = employeeList.get(i);
-            if (emp.getNumber() ==  numberEmployee) {
-                emp.setSalary(salary);
-                break;
+        public void openAccount(int numberClient, int numberAccount, String title, int amount, boolean replenished) {
+            Account account = new Account(numberAccount, title, amount, replenished);
+            openAccount(account, numberClient);
+
+        }
+
+        public void openAccount(Account account, int numberClient) {
+            boolean isOpend = false;
+            for (int i = 0; i < clientList.size(); i++) {
+                Client client = clientList.get(i);
+                if (client.getNumber() == numberClient) {
+                    client.openAccount(account);
+                    System.out.println("Account is opened");
+                    isOpend = true;
+                    break;
+                }
+            }
+
+            if (!isOpend) {
+                System.out.println("Client id " + numberClient + " is not exist");
             }
         }
-    }
-    public void printEmployees() {
-        for (int i = 0; i < employeeList.size(); i++) {
-          Employee employee = employeeList.get(i);
-          employee.printEmployee();
+
+        public void printClientAccount(int numberClient) {
+            for (int i = 0; i < clientList.size(); i++) {
+                Client client = clientList.get(i);
+                if (client.getNumber() == numberClient) {
+                    client.printAccount();
+                    break;
+                }
+            }
         }
-    }
 
-    public void whoIsDirector(){
-        director.printInformation();
-    }
+        public void setNewSalary(int numberEmployee, int salary) {
+            for (int i = 0; i < employeeList.size(); i++) {
+                Employee emp = employeeList.get(i);
+                if (emp.getNumber() == numberEmployee) {
+                    emp.setSalary(salary);
+                    break;
+                }
+            }
+        }
 
-    public void info(){
-        System.out.println(title + " " + address);
-    }
+        public void printEmployees() {
+            for (int i = 0; i < employeeList.size(); i++) {
+                Employee employee = employeeList.get(i);
+                employee.printEmployee();
+            }
+        }
 
+        public void whoIsDirector() {
+            director.printInformation();
+        }
 
+        public void info() {
+            System.out.println(title + " " + address);
+        }
+
+    public class BankDepartmentList {
+        @XmlElement(name = "bankDepartment")
+        List<BankDepartment> bankDepartments = new ArrayList<>();
+
+        public List<BankDepartment> getBankDepartments() {
+            return bankDepartments;
+        }
+
+        public void setBankDepartments(List<BankDepartment> bankDepartments) {
+            this.bankDepartments = bankDepartments;
+        }
    /* public static void main(String[] args) {
         /*Director director = new Director("Alex", "A", 50000);
         Bank b = new Bank("Sberbank","Moskva" , director);
@@ -146,4 +159,5 @@ public class Bank {
         b.printClientCredit(5000);
     }*/
 
+    }
 }

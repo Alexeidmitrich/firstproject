@@ -25,12 +25,12 @@ public class Client extends Person{
     protected String salt;
     //@Column(name="number_department")
   //  @Transient
-   // protected BankDepartment bankDepartment;
+    //protected BankDepartment bankDepartment;
     @Transient
     List<Account> accountList = new ArrayList<>();
     @Transient
     List<Credit> creditList = new ArrayList<>();
-
+    protected int numberDepartment;
     public Client() {
 
     }
@@ -43,7 +43,7 @@ public class Client extends Person{
         this.phone = phone;
         this.password = password;
         this.salt = salt;
-       // this.numberDepartment = numberDepartment;//TODO fix
+        this.numberDepartment = numberDepartment;
     }
     public Client(String firstname,String lastname, int serie, String passnumber, String email, String phone, String password, String salt, int numberDepartment){
         super(firstname, lastname);
@@ -53,7 +53,7 @@ public class Client extends Person{
         this.phone = phone;
         this.password = password;
         this.salt = salt;
-       // this.numberDepartment = numberDepartment;//TODO fix
+       this.numberDepartment = numberDepartment;//TODO fix
     }
     public void  openAccount(Account account) {
         accountList.add(account);
@@ -109,11 +109,6 @@ public class Client extends Person{
         return salt;
     }
 
-    /*public BankDepartment getBankDepartment() {
-        return bankDepartment;
-    }
-
-     */
 
     public void printClient(){
         System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() + " " );

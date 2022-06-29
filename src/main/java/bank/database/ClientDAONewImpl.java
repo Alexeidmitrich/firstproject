@@ -15,7 +15,7 @@ public class ClientDAONewImpl  implements ClientDAO{
         Session session = factory.openSession();
         session.beginTransaction();
         List<Client> clients = session
-                .createQuery("from Client")
+                .createQuery("FROM Client")
                 .getResultList();
         session.getTransaction().commit();
         factory.close();

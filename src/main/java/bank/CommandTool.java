@@ -16,8 +16,8 @@ public class CommandTool {
     public void parseCommand(String command) {
         final String addBank = "(addbank) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
         final String addDirector = "(adddirector) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+)";
-        final String addEmployee = "(addemployee) ([a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;[a-zA-Z\\sа-яА-Я\\- W$0-9]+;)";
-        final String employeeInfo = "(employee)";
+        final String addEmployee = "(addemployee) ([a-zA-Z\\sа-яА-Я\\ W$0-9]+;[a-zA-Z\\sа-яА-Я\\ W$0-9]+;[a-zA-Z\\sа-яА-Я\\ W$0-9]+)";
+       // final String employeeInfo = "(employee)";
         final String addClient = "(addclient) ([a-zA-Zа-яА-Я]+;[a-zA-Zа-яА-Я]+;[0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я@.0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[a-zA-Zа-яА-Я0-9]+;[0-9]+)";
         final String accountOpen = "(openclientaccount) ([0-9]+;[0-9]+;[a-zA-Z]+;[0-9]+;[0-9]+)";
         final String clientInfoAccount = "(printclientaccount) ([0-9]+)";
@@ -50,11 +50,6 @@ public class CommandTool {
             bankRefactoring.addEmployee(employeeData[0], employeeData[1], salary);
             System.out.println("OK");
         }
-        matcher = isPatternMatches(command , employeeInfo);
-        if (matcher.find()){
-            bankRefactoring.printEmployees();
-            System.out.println("OK");
-        }
         matcher = isPatternMatches(command , clientsInfo);
         if (matcher.find()){
             bankRefactoring.printClients();
@@ -82,6 +77,11 @@ public class CommandTool {
             bank.openAccount(numberClient, numberAccount,accountData[2], amount, replenished);
             System.out.println("OK");
         }
+        /*matcher = isPatternMatches(command , employeeInfo);
+        if (matcher.find()){
+            bankRefactoring.printEmployees();
+            System.out.println("OK");
+        }*/
         matcher = isPatternMatches(command , clientInfoAccount);
         if (matcher.find()){
             String data = matcher.group(2);

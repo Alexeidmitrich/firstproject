@@ -1,7 +1,7 @@
 addbank Лычково
 adddirector Aleksei;Pushkin;450000
-addemployee Ivan;Zukov;55000;4
-addemployee Виктор;Алексеев;45000;3
+addemployee Ivan;Zukov;55000;3
+addemployee Виктор;Алексеев;45000;1
 employee
 addclient Жанна;Alekseeva;4020;432567;lana65@demo.com;65923921;43b439fdbd320d266abe07e98e99062c;9688751387ffbc048846008c7932eb12;3
 openClientAccount 4;2;Super;4;2

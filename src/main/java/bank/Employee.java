@@ -3,9 +3,9 @@ package bank;
 import javax.persistence.*;
 import javax.persistence.Entity;
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Employee extends Person {
-    @Column
+
     protected double salary;
 
     /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -25,7 +25,7 @@ public class Employee extends Person {
     public Employee(String firstname, String lastname, BankDepartment bankDepartment, double salary) {
         super(firstname, lastname);
         this.salary = salary;
-  //      this.bankDepartment = bankDepartment;
+        //this.bankDepartment = bankDepartment;
     }
     public Employee(){
     }

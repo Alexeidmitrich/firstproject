@@ -8,17 +8,17 @@ import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
 
-    @Override
+   @Override
     public List<Employee> getAllEmployee() {
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        List<Employee> employee = session
+        List<Employee> employees = session
                 .createQuery("FROM Employee")
                 .getResultList();
         session.getTransaction().commit();
         factory.close();
-        return  employee;
+        return  employees;
     }
 
     @Override

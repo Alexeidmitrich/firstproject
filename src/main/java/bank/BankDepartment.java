@@ -1,23 +1,17 @@
 package bank;
 
-import demoobject.Person;
-
 import javax.persistence.*;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-//                                                JAXB
-//@Entity
-//@Table(name = "bank")
+@Entity
+@Table(name = "bank")
 @XmlRootElement
 public class BankDepartment {
 
-  //  @Id
-  ///  @GeneratedValue(strategy = GenerationType.AUTO)
- //   @Column(name = "bankid")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "bankid")
     @XmlElement
     private int id;
     @XmlElement
