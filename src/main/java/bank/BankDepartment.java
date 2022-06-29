@@ -1,14 +1,10 @@
 package bank;
 
-import com.sun.xml.txw2.annotation.XmlAttribute;
 import demoobject.Person;
 
 import javax.persistence.*;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +13,17 @@ import java.util.Objects;
 //@Entity
 //@Table(name = "bank")
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class BankDepartment {
 
   //  @Id
   ///  @GeneratedValue(strategy = GenerationType.AUTO)
  //   @Column(name = "bankid")
+    @XmlElement
     private int id;
+    @XmlElement
     private String city;
+
+
     //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankDepartment")
     //@Transient
 //    private List<Client> clientsList = new ArrayList<>();
@@ -55,7 +54,7 @@ public class BankDepartment {
         System.out.println(id + " " + city);
     }
 
-    @Override
+   @Override
     public String toString() {
         return "BankDepartment{" +
                 "id=" + id +

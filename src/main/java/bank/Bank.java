@@ -1,13 +1,12 @@
 package bank;
 
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-@XmlRootElement
-@XmlAccessorType
+@XmlRootElement(name = "bank")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Bank {
-
+    @XmlElement
     String title;
     String address;
     @XmlElement
@@ -15,8 +14,7 @@ public class Bank {
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
-    @XmlElementWrapper(name = "bankDepartments")
-    List<BankDepartment> bankDepartments = new ArrayList<>();
+    BankDepartmentList bankDepartments;
 
 
 
@@ -36,7 +34,8 @@ public class Bank {
     @Override
     public String toString() {
         return "Bank{" +
-                "director=" + director +
+                "title='" + title + '\'' +
+                ", director=" + director +
                 ", bankDepartments=" + bankDepartments +
                 '}';
     }
@@ -132,8 +131,8 @@ public class Bank {
     }
 
 
-    public static void main(String[] args) {
-        Director director = new Director("Alex", "A", 50000);
+   /* public static void main(String[] args) {
+        /*Director director = new Director("Alex", "A", 50000);
         Bank b = new Bank("Sberbank","Moskva" , director);
         b.info();
         b.whoIsDirector();
@@ -145,6 +144,6 @@ public class Bank {
         b.printClientAccount(5001);
         b.openCredit(5000,28, "Econom",100000, 12,5);
         b.printClientCredit(5000);
-    }
+    }*/
 
 }

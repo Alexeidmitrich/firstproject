@@ -1,14 +1,19 @@
 package bank;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "person")
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
+    @XmlTransient
     private int number;
     @Column(name = "firstname",nullable = false, length = 50)
     private String firstname;
@@ -41,16 +46,15 @@ public abstract class Person {
         return lastname;
     }
 
+    public void printInformation(){
+        System.out.println(getFirstname() + " " + getLastname() + " " + getNumber());
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "number=" + number +
-                ", firstname='" + firstname + '\'' +
+                "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
-    }
-
-    public void printInformation(){
-        System.out.println(getFirstname() + " " + getLastname() + " " + getNumber());
     }
 }
