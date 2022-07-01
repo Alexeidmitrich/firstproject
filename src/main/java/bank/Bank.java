@@ -14,8 +14,9 @@ public class Bank {
     List<Employee> employeeList = new ArrayList<>();
     List<Client> clientList = new ArrayList<>();
     List<Credit> creditList = new ArrayList<>();
-    @XmlElement
-    BankDepartmentList bankDepartments;
+    @XmlElement(name = "bankDepartment")
+    @XmlElementWrapper(name= "bankDepartments")
+    List<BankDepartment> bankDepartments = new ArrayList<>();
 
 
     public Bank(String title, String address) {
@@ -133,17 +134,7 @@ public class Bank {
             System.out.println(title + " " + address);
         }
 
-    public class BankDepartmentList {
-        @XmlElement(name = "bankDepartment")
-        List<BankDepartment> bankDepartments = new ArrayList<>();
 
-        public List<BankDepartment> getBankDepartments() {
-            return bankDepartments;
-        }
-
-        public void setBankDepartments(List<BankDepartment> bankDepartments) {
-            this.bankDepartments = bankDepartments;
-        }
    /* public static void main(String[] args) {
         /*Director director = new Director("Alex", "A", 50000);
         Bank b = new Bank("Sberbank","Moskva" , director);
@@ -160,4 +151,4 @@ public class Bank {
     }*/
 
     }
-}
+

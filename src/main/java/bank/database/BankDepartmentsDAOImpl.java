@@ -20,6 +20,11 @@ public class BankDepartmentsDAOImpl  implements BankDepartmentDAO{
     }
 
     @Override
+    public void saveAll(List<BankDepartment> bankDepartmentList) {
+
+    }
+
+    @Override
     public List<BankDepartment> getAllDepartments() {
         SessionFactory factory = HiberUtil.getSessionFactory();
         Session session = factory.openSession();

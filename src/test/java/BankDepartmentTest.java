@@ -15,8 +15,6 @@ public class BankDepartmentTest {
 
     @Before
     public void init() throws JAXBException {
-        this.context = JAXBContext.newInstance(BankDepartment.class);
-        this.context = JAXBContext.newInstance(Director.class);
         this.context = JAXBContext.newInstance(Bank.class);
     }
 
