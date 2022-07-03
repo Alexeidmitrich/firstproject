@@ -22,6 +22,7 @@ public class Bank {
     public Bank(String title, String address) {
         this.title = title;
         this.address = address;
+
     }
 
     public Bank(String title, String address, Director director) {
