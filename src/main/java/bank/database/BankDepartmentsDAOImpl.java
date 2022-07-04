@@ -4,10 +4,11 @@ import bank.BankDepartment;
 import bank.database.hibernate.HiberUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import java.util.List;
-
+@Component
 public class BankDepartmentsDAOImpl  implements BankDepartmentDAO{
     @Override
     public void save(BankDepartment bankDepartment) {

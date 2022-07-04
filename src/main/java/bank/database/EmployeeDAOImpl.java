@@ -4,8 +4,11 @@ import bank.Employee;
 import bank.database.hibernate.HiberUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import java.util.List;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Component
 public class EmployeeDAOImpl implements EmployeeDAO{
 
    @Override

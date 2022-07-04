@@ -1,14 +1,20 @@
 package bank;
 
 import bank.database.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
-
+@Service
 public class BankRefactoring {
-
-    private ClientDAO clientDAO = new ClientDAOImpl();
-    private BankDepartmentDAO bankDepartmentDAO = new BankDepartmentsDAOImpl();
-    private DirectorDAO directorDAO = new DirectorDAOImpl();
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+    @Autowired
+    private ClientDAO clientDAO;
+    @Autowired
+    private BankDepartmentDAO bankDepartmentDAO;
+    @Autowired
+    private DirectorDAO directorDAO;
+    @Autowired
+    private EmployeeDAO employeeDAO;
 
     public void addBank(String city){
         BankDepartment bankDepartment = new BankDepartment(city);

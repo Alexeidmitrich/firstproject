@@ -4,9 +4,11 @@ import bank.Director;
 import bank.database.hibernate.HiberUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Component
 public class DirectorDAOImpl implements DirectorDAO {
     @Override
     public List<Director> getAllDirector() {

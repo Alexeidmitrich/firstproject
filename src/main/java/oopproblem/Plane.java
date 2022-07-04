@@ -20,8 +20,6 @@ public class Plane {
         engine.work();
         gear.up();
         gear.roll();
-
-
     }
 
     public static void main(String[] args) {
